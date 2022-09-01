@@ -1,0 +1,19 @@
+<h1>Pokemon search!</h1>
+<%= render "shared/search", { path: new_pokemon_path } %>
+<div>
+  <% if @response.present? %>
+    <table>
+      <tr>
+        <td>No.</td>
+        <td><%= @response["id"] %></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><%= @response["name"] %></td>
+      </tr>
+    </table>
+    <%= image_tag(@response["sprites"]["front_default"], size: "200") %>
+  <% else %>
+    <p> NO such pokemon!!</p>
+  <% end %>
+</div>
