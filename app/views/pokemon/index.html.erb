@@ -23,6 +23,22 @@
 
 
 <h1>Search pokee</h1>
-<p>
-<%= @pokemons %>
-</p>
+
+<div>
+  <% @pokemons.each do |poke|%>
+    <table>
+      <tr>
+        <td>No.</td>
+        <td><%= poke["id"] %></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><%= poke["name"] %></td>
+      </tr>
+    </table>
+
+    <%= image_tag(poke["sprites"]["front_default"], size: "200") if @response["sprites"]["front_default"] %>
+
+  <% end %>
+</div>
+
