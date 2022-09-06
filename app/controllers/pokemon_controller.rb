@@ -1,9 +1,8 @@
 require 'json'
 class PokemonController < ApplicationController
   def index
-    pokemons_test=[]
     pokemons=[]
-    url='https://pokeapi.co/api/v2/pokemon?limit=5'
+    url='https://pokeapi.co/api/v2/pokemon?limit=20'
     response=Faraday.get(url)
      @row_data=JSON.parse(response.body)
     @row_data.each do |key, value|
@@ -18,15 +17,7 @@ class PokemonController < ApplicationController
     @pokemons=pokemons
 
     end
-    # render json: { pokemons: @pokemon_json }
-  # end
 
-    # pokemon=gets.strip.upcase
-    #
-    # found=pokemons.select do |pokemon|
-    #   pokemon.upcase.include?(pokemon)
-    # end
-    # puts found.first
   def new
     return if params[:search].blank?
     raw_response = Faraday.get "https://pokeapi.co/api/v2/pokemon/#{params[:search]}"
