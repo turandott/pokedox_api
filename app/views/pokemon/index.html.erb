@@ -21,23 +21,27 @@
 </div>
 
 
-
+<%= render "shared/search", { path: new_pokemon_path } %>
 <h1 class="title">Choose pokemon!</h1>
 <div class="cards-wrapper">
+  <% if @pokemons.present? %>
   <% @pokemons.each do |poke|%>
-  <div class="card">
+
+      <div class="card">
       <div class="card-item">
-      <p>No.  <%= poke["id"] %></p>
+
+        <%=link_to poke.name, pokemon_path(poke.id) %>
+      <p>No.  <%= poke.order %></p>
       </div>
       <div class="card-item">
-      <p>Name:  <%= poke["name"] %></p>
+      <p>Name:  <%= poke.name %></p>
       </div>
       <div class="card-picture">
-      <%= image_tag(poke["sprites"]["front_default"], size: "200") if @response["sprites"]["front_default"] %>
+      <%= image_tag(poke.image_url, size: "200") if poke.image_url %>
       </div>
   </div>
   <% end %>
-
+  <% end %>
   </div>
 
 

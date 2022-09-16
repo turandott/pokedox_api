@@ -1,5 +1,3 @@
-<h1>Pokemon</h1>
-<%= render "shared/search", { path: new_pokemon_path } %>
 <div>
   <%=@response %>
   <% if @pokemon.present? %>
@@ -29,13 +27,5 @@
         <td><%= @pokemon.poke_ability %></td>
       </tr>
     </table>
-    <%= form_with(model: @pokemon, url: pokemon_index_path)  do |f| %>
-      <%= f.hidden_field :order  %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :image_url %>
-      <%= f.submit 'create', name: nil %>
-    <% end %>
-  <% else %>
-    <p>help me ！</p>
+    </div>
   <% end %>
-</div>
