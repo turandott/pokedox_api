@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2022_09_15_131949) do
   enable_extension "plpgsql"
 
   create_table "pokemons", force: :cascade do |t|
-    t.integer "order", null: false
-    t.string "name", null: false
-    t.string "image_url", null: false
+    t.integer "order"
+    t.string "name"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "weight"
