@@ -2,7 +2,6 @@
 <%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
 <body>
 
-
 <div class="navbar ">
   <div class="nav-brand">
   <%= image_tag "pngwing.png", height: 50 %>
@@ -23,9 +22,7 @@
 
 <%= render "shared/search", { path: new_pokemon_path } %>
 <h1 class="title">Choose pokemon!</h1>
-
+  <div>
   <%=render "shared/card" %>
   </div>
-
-
 </body>

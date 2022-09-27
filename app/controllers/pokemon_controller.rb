@@ -6,29 +6,10 @@ class PokemonController < ApplicationController
     # binding.pry
     # pokemon=params[:pokemon]
     @pokemon=PokemonRequest.get_pokemon
-    # binding.pry
     @poke=Poke.new(@pokemon)
+    @pokemon=Pokemon.create_pokemon(@poke)
 
-    # pokemon_ex = params[:pokemon]
-    @pokemon_ex=Pokemon.create_pokemon(@poke)
-
-
-    # pokemons=[]
-    # url='https://pokeapi.co/api/v2/pokemon?limit=20'
-    # response=Faraday.get(url)
-    #  @row_data=JSON.parse(response.body)
-    # @row_data.each do |key, value|
-    #   if key=="results"
-    #     value.each do |k, v|
-    #       response=Faraday.get(k["url"])
-    #       @response=JSON.parse(response.body)
-    #       pokemons<<@response
-    #     end
-    #   end
-    # end
-    # @pokemons=pokemons
-
-    end
+  end
 
   # def new
   #   return if params[:search].blank?
@@ -76,9 +57,9 @@ class PokemonController < ApplicationController
   #
   # end
 
-  # def show
-  #   @pokemon = Pokemon.find(params[:id])
-  # end
+  def show
+    @pokemon = Pokemon.find(params[:id])
+  end
 
   private
   def pokemon_params
