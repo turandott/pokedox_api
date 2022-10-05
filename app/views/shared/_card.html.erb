@@ -1,13 +1,15 @@
 <div class="card">
+
   <div class="card-item">
 <!--    <p>  <%#= @pokemon.name %></p>-->
-    <%=link_to @pokemon.name, pokemon_path(@pokemon.id) %>
-    <p>No.  <%= @pokemon.order %></p>
+
+    <%=link_to pokemon.name, pokemon_path(pokemon.id) %>
+    <p>No.  <%= pokemon.order %></p>
   </div>
   <div class="card-item">
-    <p>Name:  <%= @pokemon.name %></p>
+    <p>Name:  <%= pokemon.name %></p>
   </div>
   <div class="card-picture">
-    <%= image_tag(@pokemon.image_url, size: "200") if @pokemon.image_url %>
+    <%= image_tag(pokemon.image_url, size: "200") if pokemon.image_url %>
   </div>
 </div>

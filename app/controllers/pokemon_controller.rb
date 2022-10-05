@@ -3,12 +3,15 @@ require 'pokemon_request'
 class PokemonController < ApplicationController
   # skip_before_action :verify_authenticity_token
   def index
-    # binding.pry
     pokemon=params[:pokemon]
     pokemon=PokemonRequest.get_pokemon(pokemon)
-    poke=Poke.new(pokemon)
-    @pokemon=Pokemon.create_pokemon(poke)
-
+    # binding.pry
+    if !pokemon.nil?
+      poke=Poke.new(pokemon)
+      @pokemon=Pokemon.create_pokemon(poke)
+    else
+      redirect_to root_path
+    end
   end
 
   # def new

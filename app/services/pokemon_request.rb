@@ -5,8 +5,13 @@ class PokemonRequest
 
   def self.get_pokemon(pokemon)
     response =Faraday.get(URL+"pokemon/#{pokemon}")
-    row_data=parsed_data(response)
-  end
+    if response.status==200
+      row_data=parsed_data(response)
+    else
+      row_data= nil
+      return row_data
+    end
+    end
 
   def self.get_all_pokemons
     pokemons=[]

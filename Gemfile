@@ -17,6 +17,7 @@ gem 'puma', '~> 4.1'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'faraday'
 gem 'json'
+gem 'jsonapi-serializer'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -29,6 +30,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails',require: true
+  gem 'pry-byebug', require: true
+  gem 'pry-doc', require: true
+  gem 'rspec-rails', require: true
 end
 
 group :development do

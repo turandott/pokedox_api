@@ -6,10 +6,10 @@ class Poke
 
     @name=pokemon[:name]
     @order=pokemon[:id]
-    @image_url=pokemon[:sprites][:front_default]
+    @image_url=pokemon[:sprites][:front_default] rescue nil
     @weight=pokemon[:weight]
-    @poke_type=pokemon[:types][0][:type][:name]
-    @poke_ability=pokemon[:abilities][0][:ability][:name]
+    @poke_type=pokemon[:types][0][:type][:name] rescue nil
+    @poke_ability=pokemon[:abilities][0][:ability][:name] rescue nil
     # binding.pry
   end
 end

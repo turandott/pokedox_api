@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
 <body>
 
+
 <div class="navbar ">
   <div class="nav-brand">
   <%= image_tag "pngwing.png", height: 50 %>
@@ -18,11 +19,36 @@
       </li>
   </div>
 </div>
+<%= render "shared/search", { path: pokemon_index_path } %>
 
-
-<%= render "shared/search", { path: new_pokemon_path } %>
-<h1 class="title">Choose pokemon!</h1>
-  <div>
-  <%=render "shared/card" %>
+ <%#=  @pokemon.nil?%>
+<%#=@pokemon.class %>
+<%#=@pokemon.name %>
+<%# partial_content = render_to_string(partial: 'shared/card', locals: {pokemon: @pokemon} ).strip %>
+<%# if partial_content.present? %>
+  <%#= partial_content %>
+<%# else %>
+<!--  <div class="css_for_no_info">-->
+    <%#= render something else %>
+<!--    <p> no such pokemon</p>-->
   </div>
+<% if @pokemon.name.nil? %>
+<p> no such pokemon</p>
+<% else %>
+  <%= render partial: 'shared/card', locals: {pokemon: @pokemon} %>
+<% end %>
+<!--  <p>est takoi pokemooon</p>-->
+
+<%# else %>
+<!--  <p> no such pokemon</p>-->
+
+<%# end %>
+
+
+<%# if @pokemon.present? %>
+  <%#= render partial: 'shared/card', locals: {pokemon: @pokemon} %>
+  <%# else%>
+<!--  <p> no such pokemon</p>-->
+<%# end %>
+
 </body>
