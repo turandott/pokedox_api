@@ -1,13 +1,9 @@
 <%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
 <%= render "shared/nav" %>
-
-<body>
-<div>
-  <%=@response %>
+<div class="show-card">
   <% if @pokemon.present? %>
-    <div class="show-card">
   <div class="picture-card">
-  <p> <%= @pokemon.name %></p>
+  <p class="card-name"> <%= @pokemon.name %></p>
     <%= image_tag(@pokemon.image_url, size: "300") %>
     </div>
     <div class="info-card">
@@ -17,6 +13,4 @@
         <p>Ability: <%= @pokemon.poke_ability %></p>
     </div>
     </div>
-    </div>
   <% end %>
-  </body>

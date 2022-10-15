@@ -1,41 +1,10 @@
-<h1>Pokemon</h1>
-<%= render "shared/search", { path: new_pokemon_path } %>
-<div>
-  <%=@response %>
-  <% if @pokemon.present? %>
-    <table>
-      <tr>
-        <td>No.</td>
-        <td><%= @pokemon.order %></td>
-      </tr>
-      <tr>
-        <td>Name:</td>
-        <td><%= @pokemon.name %></td>
-      </tr>
+<%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
+<%= render "shared/nav" %>
+<h1>Search pokemon by name or number!</h1>
 
-    </table>
-    <%= image_tag(@pokemon.image_url, size: "200") %>
-    <table>
-      <tr>
-        <td>Weight:</td>
-        <td><%= @pokemon.weight %></td>
-      </tr>
-      <tr>
-        <td>Type:</td>
-        <td><%= @pokemon.poke_type %></td>
-      </tr>
-      <tr>
-        <td>Ability:</td>
-        <td><%= @pokemon.poke_ability %></td>
-      </tr>
-    </table>
-    <%= form_with(model: @pokemon, url: pokemon_index_path)  do |f| %>
-      <%= f.hidden_field :order  %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :image_url %>
-      <%= f.submit 'create', name: nil %>
-    <% end %>
-  <% else %>
-    <p>help me ！</p>
-  <% end %>
-</div>
+<%= render "shared/search", { path: new_pokemon_path } %>
+<% if @pokemon.name.nil? %>
+  <p> no such pokemon</p>
+<% else %>
+  <%= render partial: 'shared/card', locals: {pokemon: @pokemon} %>
+<% end %>

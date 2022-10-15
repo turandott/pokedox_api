@@ -1,38 +1,17 @@
-
 <%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
-<body>
-
 <%= render "shared/nav" %>
-<%= render "shared/search", { path: pokemon_index_path } %>
 
- <%#=  @pokemon.nil?%>
-<%#=@pokemon.class %>
-<%#=@pokemon.name %>
-<%# partial_content = render_to_string(partial: 'shared/card', locals: {pokemon: @pokemon} ).strip %>
-<%# if partial_content.present? %>
-  <%#= partial_content %>
-<%# else %>
-<!--  <div class="css_for_no_info">-->
-    <%#= render something else %>
-<!--    <p> no such pokemon</p>-->
-  </div>
-<% if @pokemon.name.nil? %>
-<p> no such pokemon</p>
+<% if @pokemons.nil? %>
+<p> no pokemons</p>
 <% else %>
-  <%= render partial: 'shared/card', locals: {pokemon: @pokemon} %>
+  <div class="cards">
+<% @pokemons.each do |pokemon| %>
+<%= render partial: 'shared/card', locals: {pokemon: pokemon} %>
+
 <% end %>
-<!--  <p>est takoi pokemooon</p>-->
-
-<%# else %>
-<!--  <p> no such pokemon</p>-->
-
-<%# end %>
-
-
-<%# if @pokemon.present? %>
-  <%#= render partial: 'shared/card', locals: {pokemon: @pokemon} %>
-  <%# else%>
-<!--  <p> no such pokemon</p>-->
-<%# end %>
-
+<% end %>
+</div>
 </body>
+
+
+

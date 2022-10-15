@@ -3,18 +3,27 @@ require 'pokemon_request'
 class PokemonController < ApplicationController
   # skip_before_action :verify_authenticity_token
   def index
-    pokemon=params[:pokemon]
-    pokemon=PokemonRequest.get_pokemon(pokemon)
-    # binding.pry
-    if !pokemon.nil?
-      poke=Poke.new(pokemon)
-      @pokemon=Pokemon.create_pokemon(poke)
-    else
-      redirect_to root_path
-    end
+    @pokemons=Pokemon.all
+    # pokemon=params[:pokemon]
+    # pokemon=PokemonRequest.get_pokemon(pokemon)
+    # # binding.pry
+    # if !pokemon.nil?
+    #   poke=Poke.new(pokemon)
+    #   @pokemon=Pokemon.create_pokemon(poke)
+    # else
+    #   redirect_to root_path
+    # end
   end
 
-  # def new
+  def new
+     pokemon=params[:pokemon]
+      pokemon=PokemonRequest.get_pokemon(pokemon)
+      if !pokemon.nil?
+        poke=Poke.new(pokemon)
+        @pokemon=Pokemon.create_pokemon(poke)
+      else
+        redirect_to root_path
+      end
   #   return if params[:search].blank?
   #   raw_response = Faraday.get "https://pokeapi.co/api/v2/pokemon/#{params[:search]}"
   #   if raw_response.status == 200
@@ -26,7 +35,7 @@ class PokemonController < ApplicationController
   #     # render status: 400
   #     # redirect_to new_pokemon_path, notice: "#{raw_response.status}error!"
   #   end
-  # end
+  end
   #
   # def random_pokemon
   #   url='https://pokeapi.co/api/v2/pokemon-species/?limit=0'

@@ -1,0 +1,16 @@
+<div class="navbar ">
+  <div class="nav-brand">
+    <%= image_tag "pngwing.png", height: 50 %>
+  </div>
+  <div class="nav-container">
+    <li class="nav-item">
+      <%= link_to 'Home', pokemon_index_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Search Pokemon',new_pokemon_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Random Pokemon',pokemon_random_pokemon_path, class: 'nav-link' %>
+    </li>
+  </div>
+</div>
