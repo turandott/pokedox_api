@@ -26,6 +26,12 @@ body{
     flex-direction:row ;
 
 }
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .cards-wrapper{
     display: flex;
     flex-wrap: wrap;
@@ -46,4 +52,16 @@ body{
 .card:hover{
     background-color: lightblue;
     cursor: pointer;
+}
+.show-card{
+    display: flex;
+    flex-direction: row;
+    background-color: rebeccapurple;
+}
+.card-name{
+    font-family: Ani;
+    font-size: large;
+}
+.info-card{
+    height: 300px;
 }

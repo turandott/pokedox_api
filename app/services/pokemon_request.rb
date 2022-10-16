@@ -15,13 +15,13 @@ class PokemonRequest
 
   def self.get_all_pokemons
     pokemons=[]
-    response=Faraday.get(URL+"pokemon?limit=5")
+    response=Faraday.get(URL+"pokemon?limit=30")
      @row_data=JSON.parse(response.body)
     @row_data.each do |key, value|
      if key=="results"
     value.each do |k, v|
       response=Faraday.get(k["url"])
-     @response=JSON.parse(response.body)
+     @response=parsed_data(response)
      pokemons<<@response
      end
      end

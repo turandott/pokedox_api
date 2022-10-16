@@ -1,17 +1,18 @@
-<%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
+<%#= stylesheet_link_tag '/assets/poke' , media: 'all'%>
+<%= stylesheet_link_tag    "application", :media => "all" %>
 <%= render "shared/nav" %>
 
+<div class="cards">
 <% if @pokemons.nil? %>
 <p> no pokemons</p>
 <% else %>
-  <div class="cards">
-<% @pokemons.each do |pokemon| %>
+    <% @pokemons.each do |pokemon| %>
 <%= render partial: 'shared/card', locals: {pokemon: pokemon} %>
-
 <% end %>
+    <%= page_entries_info @pokemons %>
+    <%= paginate @pokemons %>
 <% end %>
 </div>
-</body>
 
 
 

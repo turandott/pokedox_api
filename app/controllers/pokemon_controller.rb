@@ -1,9 +1,16 @@
 require 'pokemon_request'
 # require 'pry-rails'
 class PokemonController < ApplicationController
+
   # skip_before_action :verify_authenticity_token
   def index
-    @pokemons=Pokemon.all
+
+    pokemons=PokemonRequest.get_all_pokemons
+    pokemons.each do |poke|
+    pokemon=Poke.new(poke)
+    @pokemon=Pokemon.create_pokemon(pokemon)
+    end
+    @pokemons=Pokemon.order(:id).page(params[:page])
     # pokemon=params[:pokemon]
     # pokemon=PokemonRequest.get_pokemon(pokemon)
     # # binding.pry
