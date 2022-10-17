@@ -4,11 +4,11 @@ class PokemonController < ApplicationController
 
   # skip_before_action :verify_authenticity_token
   def index
-
+    # pokemons=Pokemon.all.delete_all
     pokemons=PokemonRequest.get_all_pokemons
     pokemons.each do |poke|
-    pokemon=Poke.new(poke)
-    @pokemon=Pokemon.create_pokemon(pokemon)
+      @pokemon=Poke.new(poke)
+    @pokemon=Pokemon.create_pokemon(@pokemon)
     end
     @pokemons=Pokemon.order(:id).page(params[:page])
     # pokemon=params[:pokemon]
@@ -43,9 +43,15 @@ class PokemonController < ApplicationController
   #     # redirect_to new_pokemon_path, notice: "#{raw_response.status}error!"
   #   end
   end
+  def show
+    @pokemon = Pokemon.find(params[:id])
+  end
   #
-  # def random_pokemon
-  #   url='https://pokeapi.co/api/v2/pokemon-species/?limit=0'
+  def random_pokemon
+    @random_pokemon=Pokemon.limit(1).order("RANDOM()")
+
+
+    #   url='https://pokeapi.co/api/v2/pokemon-species/?limit=0'
   #   response=Faraday.get(url)
   #   @row_data=JSON.parse(response.body)
   #   @row_data.each do |key, value|
@@ -65,20 +71,13 @@ class PokemonController < ApplicationController
   #   else
   #     render :new
   #   end
-    # @pokemons.map do |poke|
-    #   Pokemon.new(pokemon_params)
-        # (img:poke['sprites']['other']['dream_world']["front_default"],
-        # name: poke['forms'][0]['name'], weight: poke['weight'],
-        # poke_type: poke['types'][0]['type']['name'],
-        # poke_ability: poke['abilities'][0]['ability']['name'],
-        # poke_id: poke['id'])
-    # end
-  #
-  # end
 
-  def show
-    @pokemon = Pokemon.find(params[:id])
+  #
   end
+
+
+
+
 
   private
   def pokemon_params

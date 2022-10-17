@@ -1,19 +1,20 @@
-<h1><%=@pokemon_number %></h1>
-<div>
-  <% if @response.present? %>
-    <table>
-      <tr>
-        <td>No.</td>
-        <td><%= @response["id"] %></td>
-      </tr>
-      <tr>
-        <td>Name:</td>
-        <td><%= @response["name"] %></td>
-      </tr>
-    </table>
+<%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
+<%= render "shared/nav" %>
+<div class="show-card">
+  <%# if @random_pokemon.present? %>
+    <%#= render partial: 'shared/card', locals: {pokemon: @random_pokemon} %>
 
-    <%= image_tag(@response["sprites"]["front_default"], size: "200") if @response["sprites"]["front_default"] %>
-  <% else %>
-    <p> NO such pokemon!!</p>
+<!--    </div>-->
+  <% if @pokemon.present? %>
+    <div class="picture-card">
+      <p class="card-name"> <%= @pokemon.name %></p>
+      <%= image_tag(@pokemon.image_url, size: "300") %>
+    </div>
+    <div class="info-card">
+      <p>No. <%= @pokemon.order %></p>
+      <p>Weight: <%= @pokemon.weight %></p>
+      <p>Type: <%= @pokemon.poke_type %></p>
+      <p>Ability: <%= @pokemon.poke_ability %></p>
+    </div>
+    </div>
   <% end %>
-</div>
