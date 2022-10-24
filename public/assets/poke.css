@@ -56,12 +56,14 @@ body{
 .show-card{
     display: flex;
     flex-direction: row;
-    background-color: rebeccapurple;
 }
 .card-name{
-    font-family: Ani;
     font-size: large;
 }
 .info-card{
     height: 300px;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
 }

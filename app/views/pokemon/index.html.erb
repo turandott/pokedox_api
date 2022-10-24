@@ -1,4 +1,4 @@
-<%#= stylesheet_link_tag '/assets/poke' , media: 'all'%>
+<%= stylesheet_link_tag '/assets/poke' , media: 'all'%>
 <%= stylesheet_link_tag    "application", :media => "all" %>
 <%= render "shared/nav" %>
 
@@ -9,9 +9,11 @@
     <% @pokemons.each do |pokemon| %>
 <%= render partial: 'shared/card', locals: {pokemon: pokemon} %>
 <% end %>
-    <%= page_entries_info @pokemons %>
-    <%= paginate @pokemons %>
 <% end %>
+</div>
+<div class="pagination">
+  <p><%= page_entries_info @pokemons %></p>
+  <p><%= paginate @pokemons %></p>
 </div>
 
 
